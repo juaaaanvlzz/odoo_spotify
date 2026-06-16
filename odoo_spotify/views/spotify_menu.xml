@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- Limpiar registros viejos de migración -->
+        <delete model="ir.ui.menu" id="menu_spotify_home"/>
+        <delete model="ir.ui.menu" id="menu_spotify_home_action"/>
+        <delete model="ir.actions.client" id="action_spotify_home"/>
+
         <!-- Menu raíz -->
         <menuitem id="menu_odoo_spotify_root"
                   name="Odoo Spotify"
