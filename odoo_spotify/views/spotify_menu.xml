@@ -4,33 +4,14 @@
         <!-- Menu raíz -->
         <menuitem id="menu_odoo_spotify_root"
                   name="Odoo Spotify"
-                  web_icon="odoo_spotify,static/description/icon.png"
                   sequence="10"/>
 
-        <!-- Dashboard / Home -->
-        <menuitem id="menu_spotify_home"
-                  name="Home"
-                  parent="menu_odoo_spotify_root"
-                  sequence="10"/>
-
-        <record id="action_spotify_home" model="ir.actions.client">
-            <field name="name">Home</field>
-            <field name="tag">display_notification</field>
-            <field name="params">{'title': 'Welcome to Odoo Spotify', 'message': 'Browse artists, albums and playlists.', 'type': 'info', 'sticky': True}</field>
-        </record>
-
-        <menuitem id="menu_spotify_home_action"
-                  name="Home"
-                  parent="menu_spotify_home"
-                  action="action_spotify_home"
-                  sequence="10"/>
-
-        <!-- Artists -->
+        <!-- Artists (landing page) -->
         <menuitem id="menu_spotify_artists"
                   name="Artists"
                   parent="menu_odoo_spotify_root"
                   action="action_spotify_artist"
-                  sequence="20"/>
+                  sequence="10"/>
 
         <!-- Albums -->
         <menuitem id="menu_spotify_albums"

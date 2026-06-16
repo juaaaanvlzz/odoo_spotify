@@ -13,7 +13,6 @@ con una interfaz visual moderna tipo reproductor multimedia.
     "license": "LGPL-3",
     "depends": ["base", "web"],
     "data": [
-        "security/spotify_groups.xml",
         "security/ir.model.access.csv",
         "views/spotify_artist_views.xml",
         "views/spotify_album_views.xml",
@@ -25,5 +24,5 @@ con una interfaz visual moderna tipo reproductor multimedia.
     "installable": True,
     "application": True,
     "auto_install": False,
-    "icon": "/odoo_spotify/static/description/icon.png",
+
 }
