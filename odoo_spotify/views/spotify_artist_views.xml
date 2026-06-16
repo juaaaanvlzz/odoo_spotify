@@ -38,12 +38,12 @@
             <field name="name">spotify.artist.tree</field>
             <field name="model">spotify.artist</field>
             <field name="arch" type="xml">
-                <tree>
+                <list>
                     <field name="image" widget="image" class="o_spotify_tree_image"/>
                     <field name="name"/>
                     <field name="genre"/>
                     <field name="track_count"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -107,7 +107,7 @@
         <record id="action_spotify_artist" model="ir.actions.act_window">
             <field name="name">Artists</field>
             <field name="res_model">spotify.artist</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">kanban,list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Add your first artist

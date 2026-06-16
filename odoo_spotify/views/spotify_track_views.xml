@@ -5,7 +5,7 @@
             <field name="name">spotify.track.tree</field>
             <field name="model">spotify.track</field>
             <field name="arch" type="xml">
-                <tree>
+                <list>
                     <field name="sequence"/>
                     <field name="name"/>
                     <field name="artist_name"/>
@@ -17,7 +17,7 @@
                             icon="fa-play"
                             string="Play"
                             class="btn btn-sm btn-success"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -49,19 +49,14 @@
                         <group string="Audio">
                             <field name="audio_file"/>
                         </group>
-                    </sheet>
-                    <div class="o_spotify_player_bar" style="position:fixed;bottom:0;left:0;right:0;background:#121212;color:white;padding:12px 24px;border-top:1px solid #333;z-index:1000;">
-                        <div class="o_row">
-                            <span>Now Playing: </span>
-                            <field name="name" class="o_spotify_player_track"/>
-                            <span> - </span>
-                            <field name="artist_name" class="o_spotify_player_artist"/>
+                        <group>
                             <button name="action_play_track"
                                     type="object"
-                                    string="▶ Play"
-                                    class="btn btn-sm btn-success ml-2"/>
-                        </div>
-                    </div>
+                                    string="Play"
+                                    icon="fa-play"
+                                    class="btn-success"/>
+                        </group>
+                    </sheet>
                 </form>
             </field>
         </record>
@@ -69,7 +64,7 @@
         <record id="action_spotify_track" model="ir.actions.act_window">
             <field name="name">Tracks</field>
             <field name="res_model">spotify.track</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
     </data>
 </odoo>

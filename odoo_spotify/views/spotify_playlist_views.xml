@@ -5,12 +5,12 @@
             <field name="name">spotify.playlist.tree</field>
             <field name="model">spotify.playlist</field>
             <field name="arch" type="xml">
-                <tree>
+                <list>
                     <field name="name"/>
                     <field name="user_id"/>
                     <field name="is_public"/>
                     <field name="track_count"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -34,7 +34,7 @@
                         <notebook>
                             <page string="Tracks">
                                 <field name="track_ids">
-                                    <tree editable="bottom">
+                                    <list editable="bottom">
                                         <field name="sequence"/>
                                         <field name="name"/>
                                         <field name="artist_name"/>
@@ -45,17 +45,11 @@
                                                 icon="fa-play"
                                                 string="Play"
                                                 class="btn btn-sm btn-success"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                         </notebook>
                     </sheet>
-                    <div class="o_spotify_player_bar" style="position:fixed;bottom:0;left:0;right:0;background:#121212;color:white;padding:12px 24px;border-top:1px solid #333;z-index:1000;">
-                        <div class="o_row">
-                            <span>🎵 Now Playing: </span>
-                            <span class="o_spotify_player_track">Select a track</span>
-                        </div>
-                    </div>
                 </form>
             </field>
         </record>
@@ -63,7 +57,7 @@
         <record id="action_spotify_playlist" model="ir.actions.act_window">
             <field name="name">My Playlists</field>
             <field name="res_model">spotify.playlist</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create your first playlist

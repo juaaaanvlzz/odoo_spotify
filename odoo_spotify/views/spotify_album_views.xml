@@ -40,14 +40,14 @@
             <field name="name">spotify.album.tree</field>
             <field name="model">spotify.album</field>
             <field name="arch" type="xml">
-                <tree>
+                <list>
                     <field name="cover" widget="image" class="o_spotify_tree_image"/>
                     <field name="name"/>
                     <field name="artist_name"/>
                     <field name="album_type"/>
                     <field name="release_date"/>
                     <field name="track_count"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -75,12 +75,12 @@
                         <notebook>
                             <page string="Tracks">
                                 <field name="track_ids">
-                                    <tree editable="bottom">
+                                    <list editable="bottom">
                                         <field name="sequence"/>
                                         <field name="name"/>
                                         <field name="duration"/>
                                         <field name="play_count"/>
-                                    </tree>
+                                    </list>
                                 </field>
                             </page>
                         </notebook>
@@ -92,7 +92,7 @@
         <record id="action_spotify_album" model="ir.actions.act_window">
             <field name="name">Albums</field>
             <field name="res_model">spotify.album</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">kanban,list,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Add your first album
