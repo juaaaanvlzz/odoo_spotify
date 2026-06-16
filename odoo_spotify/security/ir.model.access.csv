@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_spotify_artist_user,spotify.artist.user,model_spotify_artist,group_spotify_user,1,1,1,0
+access_spotify_artist_manager,spotify.artist.manager,model_spotify_artist,group_spotify_manager,1,1,1,1
+access_spotify_album_user,spotify.album.user,model_spotify_album,group_spotify_user,1,1,1,0
+access_spotify_album_manager,spotify.album.manager,model_spotify_album,group_spotify_manager,1,1,1,1
+access_spotify_track_user,spotify.track.user,model_spotify_track,group_spotify_user,1,1,1,0
+access_spotify_track_manager,spotify.track.manager,model_spotify_track,group_spotify_manager,1,1,1,1
+access_spotify_playlist_user,spotify.playlist.user,model_spotify_playlist,group_spotify_user,1,1,1,1
+access_spotify_playlist_manager,spotify.playlist.manager,model_spotify_playlist,group_spotify_manager,1,1,1,1

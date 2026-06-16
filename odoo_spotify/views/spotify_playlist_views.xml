@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_spotify_playlist_tree" model="ir.ui.view">
+            <field name="name">spotify.playlist.tree</field>
+            <field name="model">spotify.playlist</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="is_public"/>
+                    <field name="track_count"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_spotify_playlist_form" model="ir.ui.view">
+            <field name="name">spotify.playlist.form</field>
+            <field name="model">spotify.playlist</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="o_spotify_form_header">
+                            <div class="o_spotify_form_title">
+                                <h1><field name="name"/></h1>
+                                <field name="user_id"/>
+                            </div>
+                        </div>
+                        <group>
+                            <field name="is_public"/>
+                            <field name="track_count"/>
+                        </group>
+                        <field name="description" placeholder="Add a description..."/>
+                        <notebook>
+                            <page string="Tracks">
+                                <field name="track_ids">
+                                    <tree editable="bottom">
+                                        <field name="sequence"/>
+                                        <field name="name"/>
+                                        <field name="artist_name"/>
+                                        <field name="album_name"/>
+                                        <field name="duration_formatted"/>
+                                        <button name="action_play_track"
+                                                type="object"
+                                                icon="fa-play"
+                                                string="Play"
+                                                class="btn btn-sm btn-success"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="o_spotify_player_bar" style="position:fixed;bottom:0;left:0;right:0;background:#121212;color:white;padding:12px 24px;border-top:1px solid #333;z-index:1000;">
+                        <div class="o_row">
+                            <span>🎵 Now Playing: </span>
+                            <span class="o_spotify_player_track">Select a track</span>
+                        </div>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_spotify_playlist" model="ir.actions.act_window">
+            <field name="name">My Playlists</field>
+            <field name="res_model">spotify.playlist</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first playlist
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

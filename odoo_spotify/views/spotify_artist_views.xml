@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_spotify_artist_kanban" model="ir.ui.view">
+            <field name="name">spotify.artist.kanban</field>
+            <field name="model">spotify.artist</field>
+            <field name="arch" type="xml">
+                <kanban class="o_spotify_kanban" default_group_by="genre" quick_create="false">
+                    <field name="name"/>
+                    <field name="image"/>
+                    <field name="genre"/>
+                    <field name="track_count"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_spotify_card">
+                                    <div class="o_spotify_card_image">
+                                        <img t-att-src="kanban_image('spotify.artist', 'image', record.id.raw_value)"
+                                             t-att-alt="record.name.value"
+                                             class="o_image_64_cover"/>
+                                    </div>
+                                    <div class="o_spotify_card_body">
+                                        <field name="name"/>
+                                        <field name="genre"/>
+                                    </div>
+                                    <div class="o_spotify_card_footer">
+                                        <span t-esc="record.track_count.value"/> tracks
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_spotify_artist_tree" model="ir.ui.view">
+            <field name="name">spotify.artist.tree</field>
+            <field name="model">spotify.artist</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="image" widget="image" class="o_spotify_tree_image"/>
+                    <field name="name"/>
+                    <field name="genre"/>
+                    <field name="track_count"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_spotify_artist_form" model="ir.ui.view">
+            <field name="name">spotify.artist.form</field>
+            <field name="model">spotify.artist</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="o_spotify_form_header">
+                            <field name="image" widget="image" class="o_spotify_form_avatar"/>
+                            <div class="o_spotify_form_title">
+                                <h1><field name="name"/></h1>
+                                <field name="genre" widget="badge"/>
+                            </div>
+                        </div>
+                        <group>
+                            <group string="Details">
+                                <field name="name"/>
+                                <field name="genre"/>
+                            </group>
+                            <group string="Stats">
+                                <field name="track_count"/>
+                            </group>
+                        </group>
+                        <field name="biography" placeholder="Write a biography..."/>
+                        <notebook>
+                            <page string="Albums">
+                                <field name="album_ids">
+                                    <kanban>
+                                        <field name="name"/>
+                                        <field name="cover"/>
+                                        <field name="release_date"/>
+                                        <field name="album_type"/>
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div class="oe_kanban_global_click">
+                                                    <div class="o_spotify_card o_spotify_card_small">
+                                                        <div class="o_spotify_card_image">
+                                                            <img t-att-src="kanban_image('spotify.album', 'cover', record.id.raw_value)"
+                                                                 t-att-alt="record.name.value"
+                                                                 class="o_image_64_cover"/>
+                                                        </div>
+                                                        <div class="o_spotify_card_body">
+                                                            <field name="name"/>
+                                                            <field name="release_date"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_spotify_artist" model="ir.actions.act_window">
+            <field name="name">Artists</field>
+            <field name="res_model">spotify.artist</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add your first artist
+                </p>
+                <p>Start building your music library.</p>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_spotify_album_kanban" model="ir.ui.view">
+            <field name="name">spotify.album.kanban</field>
+            <field name="model">spotify.album</field>
+            <field name="arch" type="xml">
+                <kanban class="o_spotify_kanban" default_group_by="album_type" quick_create="false">
+                    <field name="name"/>
+                    <field name="cover"/>
+                    <field name="artist_name"/>
+                    <field name="release_date"/>
+                    <field name="track_count"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_spotify_card">
+                                    <div class="o_spotify_card_image">
+                                        <img t-att-src="kanban_image('spotify.album', 'cover', record.id.raw_value)"
+                                             t-att-alt="record.name.value"
+                                             class="o_image_64_cover"/>
+                                    </div>
+                                    <div class="o_spotify_card_body">
+                                        <field name="name"/>
+                                        <field name="artist_name"/>
+                                    </div>
+                                    <div class="o_spotify_card_footer">
+                                        <span t-esc="record.release_date.value"/>
+                                        <span t-esc="record.track_count.value"/> tracks
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_spotify_album_tree" model="ir.ui.view">
+            <field name="name">spotify.album.tree</field>
+            <field name="model">spotify.album</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cover" widget="image" class="o_spotify_tree_image"/>
+                    <field name="name"/>
+                    <field name="artist_name"/>
+                    <field name="album_type"/>
+                    <field name="release_date"/>
+                    <field name="track_count"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_spotify_album_form" model="ir.ui.view">
+            <field name="name">spotify.album.form</field>
+            <field name="model">spotify.album</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="o_spotify_form_header">
+                            <field name="cover" widget="image" class="o_spotify_form_cover"/>
+                            <div class="o_spotify_form_title">
+                                <h1><field name="name"/></h1>
+                                <field name="artist_name"/>
+                                <field name="album_type" widget="badge"/>
+                                <field name="release_date"/>
+                            </div>
+                        </div>
+                        <group string="Details">
+                            <field name="artist_id"/>
+                            <field name="album_type"/>
+                            <field name="release_date"/>
+                            <field name="track_count"/>
+                        </group>
+                        <notebook>
+                            <page string="Tracks">
+                                <field name="track_ids">
+                                    <tree editable="bottom">
+                                        <field name="sequence"/>
+                                        <field name="name"/>
+                                        <field name="duration"/>
+                                        <field name="play_count"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_spotify_album" model="ir.actions.act_window">
+            <field name="name">Albums</field>
+            <field name="res_model">spotify.album</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Add your first album
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

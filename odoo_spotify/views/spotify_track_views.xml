@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_spotify_track_tree" model="ir.ui.view">
+            <field name="name">spotify.track.tree</field>
+            <field name="model">spotify.track</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="artist_name"/>
+                    <field name="album_name"/>
+                    <field name="duration_formatted"/>
+                    <field name="play_count"/>
+                    <button name="action_play_track"
+                            type="object"
+                            icon="fa-play"
+                            string="Play"
+                            class="btn btn-sm btn-success"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_spotify_track_form" model="ir.ui.view">
+            <field name="name">spotify.track.form</field>
+            <field name="model">spotify.track</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="o_spotify_form_header">
+                            <div class="o_spotify_form_title">
+                                <h1><field name="name"/></h1>
+                                <field name="artist_name"/>
+                                <field name="album_name"/>
+                            </div>
+                        </div>
+                        <group>
+                            <group string="Details">
+                                <field name="sequence"/>
+                                <field name="album_id"/>
+                                <field name="duration"/>
+                                <field name="stream_url" placeholder="URL for streaming..."/>
+                            </group>
+                            <group string="Stats">
+                                <field name="play_count"/>
+                                <field name="duration_formatted"/>
+                            </group>
+                        </group>
+                        <group string="Audio">
+                            <field name="audio_file"/>
+                        </group>
+                    </sheet>
+                    <div class="o_spotify_player_bar" style="position:fixed;bottom:0;left:0;right:0;background:#121212;color:white;padding:12px 24px;border-top:1px solid #333;z-index:1000;">
+                        <div class="o_row">
+                            <span>Now Playing: </span>
+                            <field name="name" class="o_spotify_player_track"/>
+                            <span> - </span>
+                            <field name="artist_name" class="o_spotify_player_artist"/>
+                            <button name="action_play_track"
+                                    type="object"
+                                    string="▶ Play"
+                                    class="btn btn-sm btn-success ml-2"/>
+                        </div>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_spotify_track" model="ir.actions.act_window">
+            <field name="name">Tracks</field>
+            <field name="res_model">spotify.track</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
